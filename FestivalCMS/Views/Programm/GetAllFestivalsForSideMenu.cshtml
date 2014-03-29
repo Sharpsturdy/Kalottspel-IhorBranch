@@ -1,0 +1,19 @@
+﻿@model IEnumerable<FestivalCMS.Models.Festival>
+
+<ul class="nav nav-second-level" id="festivalsmenu">
+    @foreach (var f in Model)
+    {
+        <li>
+            @Html.ActionLink(f.Name, "GetFestival", "Programm", new { fID = f.ID }, null)
+            @{string menuid = "festival" + f.ID.ToString();}
+            <ul class="nav nav-third-level" id="@menuid">
+                <li>
+                    @Html.ActionLink("Events", "GetFestival", "Programm", new { fID = f.ID }, null)
+                </li>
+                <li>
+                    @Html.ActionLink("Artists", "GetArtistsInFestival", "Programm", new { fID = f.ID }, null)
+                </li>
+            </ul>
+        </li>
+    }
+</ul>

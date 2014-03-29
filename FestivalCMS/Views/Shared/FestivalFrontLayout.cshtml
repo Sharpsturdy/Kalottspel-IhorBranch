@@ -1,0 +1,77 @@
+﻿<!DOCTYPE html>
+<html class=''>
+<head>
+    <title>Kalottspel</title>
+    <meta charset='windows-1251'>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- adding CSS files -->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+    <link href="~/Content/custom.css" rel="stylesheet" />
+    <link href="~/Content/media_q.css" rel="stylesheet" />
+    <link href='//fonts.googleapis.com/css?family=Lato:400,700,900,400italic' rel='stylesheet' type='text/css'>
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+
+    <!-- adding JS files -->
+    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+    <div class='menu_h'>
+        <nav class="container navbar navbar-default" role="navigation">
+            <div>
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav text-center center-block">
+                        <li class="active"><a href="@Url.Action("Index","Home")">Hjem</a></li>
+                        <li><a href="#">Artister</a></li>
+                        <li><a href="@Url.Action("Index","Programs")">Program</a></li>
+                        <li><a href="#">Kurs</a></li>
+                        <li><a href="#">Pratisk Info</a></li>
+                        <li><a href="#">Om Kalottspel</a></li>
+                    </ul>
+                </div><!-- /.navbar-collapse -->
+            </div><!-- /.container-fluid -->
+        </nav>
+        <div class='logo container'>
+            <img class='img-responsive center-block' src="~/Content/img/logo.png">
+        </div>
+    </div>
+    <div class='header'>
+    </div>
+
+    <div class='content container'>
+        @RenderBody()
+        <div class='footer'>
+            <div class='footer_h col-xs-12'>
+                st&oslash;ttespillere
+            </div>
+            @Html.Action("GetPartners", "FrontLayout")
+
+            <div class='footer_h col-xs-12'>
+                sponsorer
+            </div>
+            @Html.Action("GetSponsors", "FrontLayout")
+           
+            <small class='col-xs-12'>Developed by  Pricom and designed by www.hipphurra.as - Copyright (c) 2014 Kalottspel as. All rights reserved.</small>
+        </div>
+    </div>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.navbar-toggle').click(function () {
+                $('.logo').fadeToggle('fast');
+            });
+        });
+    </script>
+</body>
+</html>

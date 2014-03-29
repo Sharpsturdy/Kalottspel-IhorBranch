@@ -1,0 +1,632 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{2694818B-4F1D-40F3-A8CF-A4ABB8151BBF}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>FestivalCMS</RootNamespace>
+    <AssemblyName>FestivalCMS</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.0.2\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.0.2\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Web.Helpers">
+      <HintPath>..\packages\Microsoft.AspNet.WebHelpers.3.1.0\lib\net45\Microsoft.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.1.0\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.1.0\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.1.0\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.1.0\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.1.0\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="WebMatrix.Data, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.Data.3.1.0\lib\net45\WebMatrix.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="WebMatrix.WebData, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.WebData.3.1.0\lib\net45\WebMatrix.WebData.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System.Web.Mvc">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.0.0\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Data\FestivalDB.mdf" />
+    <Content Include="App_Data\FestivalDB_log.ldf">
+      <DependentUpon>FestivalDB.mdf</DependentUpon>
+    </Content>
+    <Content Include="Content\bootstrap-datetimepicker.css" />
+    <Content Include="Content\bootstrap-multiselect.css" />
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\custom.css" />
+    <Content Include="Content\font-awesome\css\font-awesome.css" />
+    <Content Include="Content\font-awesome\css\font-awesome.min.css" />
+    <Content Include="Content\font-awesome\fonts\fontawesome-webfont.svg" />
+    <Content Include="Content\img\article_photo_1.jpg" />
+    <Content Include="Content\img\artist_img.png" />
+    <Content Include="Content\img\header_bg.jpg" />
+    <Content Include="Content\img\header_triangle.png" />
+    <Content Include="Content\img\img_hover.png" />
+    <Content Include="Content\img\logo.png" />
+    <Content Include="Content\media_q.css" />
+    <Content Include="Content\plugins\dataTables\dataTables.bootstrap.css" />
+    <Content Include="Content\plugins\morris\morris-0.4.3.min.css" />
+    <Content Include="Content\plugins\social-buttons\social-buttons.css" />
+    <Content Include="Content\plugins\timeline\timeline.css" />
+    <Content Include="Content\Site.css" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Scripts\bootstrap-datetimepicker.js" />
+    <Content Include="Scripts\bootstrap-multiselect.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Content\font-awesome\fonts\fontawesome-webfont.eot" />
+    <Content Include="Content\font-awesome\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Content\font-awesome\fonts\fontawesome-webfont.woff" />
+    <Content Include="Content\font-awesome\fonts\FontAwesome.otf" />
+    <Content Include="Content\font-awesome\less\bordered-pulled.less" />
+    <Content Include="Content\font-awesome\less\core.less" />
+    <Content Include="Content\font-awesome\less\fixed-width.less" />
+    <Content Include="Content\font-awesome\less\font-awesome.less" />
+    <Content Include="Content\font-awesome\less\icons.less" />
+    <Content Include="Content\font-awesome\less\larger.less" />
+    <Content Include="Content\font-awesome\less\list.less" />
+    <Content Include="Content\font-awesome\less\mixins.less" />
+    <Content Include="Content\font-awesome\less\path.less" />
+    <Content Include="Content\font-awesome\less\rotated-flipped.less" />
+    <Content Include="Content\font-awesome\less\spinning.less" />
+    <Content Include="Content\font-awesome\less\stacked.less" />
+    <Content Include="Content\font-awesome\less\variables.less" />
+    <Content Include="Content\font-awesome\scss\font-awesome.scss" />
+    <Content Include="Content\font-awesome\scss\_bordered-pulled.scss" />
+    <Content Include="Content\font-awesome\scss\_core.scss" />
+    <Content Include="Content\font-awesome\scss\_fixed-width.scss" />
+    <Content Include="Content\font-awesome\scss\_icons.scss" />
+    <Content Include="Content\font-awesome\scss\_larger.scss" />
+    <Content Include="Content\font-awesome\scss\_list.scss" />
+    <Content Include="Content\font-awesome\scss\_mixins.scss" />
+    <Content Include="Content\font-awesome\scss\_path.scss" />
+    <Content Include="Content\font-awesome\scss\_rotated-flipped.scss" />
+    <Content Include="Content\font-awesome\scss\_spinning.scss" />
+    <Content Include="Content\font-awesome\scss\_stacked.scss" />
+    <Content Include="Content\font-awesome\scss\_variables.scss" />
+    <None Include="Properties\PublishProfiles\HIKT_FTP_new.kalottspel.pubxml" />
+    <None Include="Scripts\jquery-2.1.0.intellisense.js" />
+    <Content Include="Scripts\demo\dashboard-demo.js" />
+    <Content Include="Scripts\demo\flot-demo.js" />
+    <Content Include="Scripts\demo\morris-demo.js" />
+    <Content Include="Scripts\FestivalCMSScript.js" />
+    <None Include="Scripts\jquery-2.0.3-vsdoc.js" />
+    <Content Include="Scripts\jquery-2.1.0.js" />
+    <Content Include="Scripts\jquery-2.1.0.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\moment-with-langs.js" />
+    <Content Include="Scripts\moment-with-langs.min.js" />
+    <Content Include="Scripts\moment.js" />
+    <Content Include="Scripts\moment.min.js" />
+    <Content Include="Scripts\plugins\dataTables\dataTables.bootstrap.js" />
+    <Content Include="Scripts\plugins\dataTables\jquery.dataTables.js" />
+    <Content Include="Scripts\plugins\flot\excanvas.min.js" />
+    <Content Include="Scripts\plugins\flot\jquery.flot.js" />
+    <Content Include="Scripts\plugins\flot\jquery.flot.pie.js" />
+    <Content Include="Scripts\plugins\flot\jquery.flot.resize.js" />
+    <Content Include="Scripts\plugins\flot\jquery.flot.tooltip.min.js" />
+    <Content Include="Scripts\plugins\metisMenu\jquery.metisMenu.js" />
+    <Content Include="Scripts\plugins\morris\morris.js" />
+    <Content Include="Scripts\plugins\morris\raphael-2.1.0.min.js" />
+    <None Include="Scripts\_references.js" />
+    <Content Include="Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Code\BaseController.cs" />
+    <Compile Include="App_Code\CheckMediaAttribute.cs" />
+    <Compile Include="App_Code\MailService.cs" />
+    <Compile Include="App_Code\ISendRecoveryLink.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ArticlesController.cs" />
+    <Compile Include="Controllers\CategoriesController.cs" />
+    <Compile Include="Controllers\CmsController.cs" />
+    <Compile Include="Controllers\FooterController.cs" />
+    <Compile Include="Controllers\FrontLayoutController.cs" />
+    <Compile Include="Controllers\NewsController.cs" />
+    <Compile Include="Controllers\ProgrammController.cs" />
+    <Compile Include="Controllers\ProgramsController.cs" />
+    <Compile Include="Controllers\SeminarsController.cs" />
+    <Compile Include="Migrations\201402031219180_addedfooter.cs" />
+    <Compile Include="Migrations\201402031219180_addedfooter.Designer.cs">
+      <DependentUpon>201402031219180_addedfooter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201402031359150_addedmetatag.cs" />
+    <Compile Include="Migrations\201402031359150_addedmetatag.Designer.cs">
+      <DependentUpon>201402031359150_addedmetatag.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201402031401043_addedmetatagtoContext.cs" />
+    <Compile Include="Migrations\201402031401043_addedmetatagtoContext.Designer.cs">
+      <DependentUpon>201402031401043_addedmetatagtoContext.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201402031430114_addedcategories.cs" />
+    <Compile Include="Migrations\201402031430114_addedcategories.Designer.cs">
+      <DependentUpon>201402031430114_addedcategories.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201402031441186_addedArticles.cs" />
+    <Compile Include="Migrations\201402031441186_addedArticles.Designer.cs">
+      <DependentUpon>201402031441186_addedArticles.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201402031442373_addedArticlestoContext.cs" />
+    <Compile Include="Migrations\201402031442373_addedArticlestoContext.Designer.cs">
+      <DependentUpon>201402031442373_addedArticlestoContext.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201402031457365_addedMedia.cs" />
+    <Compile Include="Migrations\201402031457365_addedMedia.Designer.cs">
+      <DependentUpon>201402031457365_addedMedia.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201402041023555_addedvideocontent.cs" />
+    <Compile Include="Migrations\201402041023555_addedvideocontent.Designer.cs">
+      <DependentUpon>201402041023555_addedvideocontent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201402041049290_addedgalleryphotos.cs" />
+    <Compile Include="Migrations\201402041049290_addedgalleryphotos.Designer.cs">
+      <DependentUpon>201402041049290_addedgalleryphotos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201402041159485_addedrequiredtocategoryname.cs" />
+    <Compile Include="Migrations\201402041159485_addedrequiredtocategoryname.Designer.cs">
+      <DependentUpon>201402041159485_addedrequiredtocategoryname.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201402041207547_addednullstoCategorytables.cs" />
+    <Compile Include="Migrations\201402041207547_addednullstoCategorytables.Designer.cs">
+      <DependentUpon>201402041207547_addednullstoCategorytables.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201402041830283_addedUnknown.cs" />
+    <Compile Include="Migrations\201402041830283_addedUnknown.Designer.cs">
+      <DependentUpon>201402041830283_addedUnknown.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201402121015141_removenullfromcategorytable.cs" />
+    <Compile Include="Migrations\201402121015141_removenullfromcategorytable.Designer.cs">
+      <DependentUpon>201402121015141_removenullfromcategorytable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201402130857031_removenullfromarticle.cs" />
+    <Compile Include="Migrations\201402130857031_removenullfromarticle.Designer.cs">
+      <DependentUpon>201402130857031_removenullfromarticle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201402131120080_addeddeisplaynamestoarticles.cs" />
+    <Compile Include="Migrations\201402131120080_addeddeisplaynamestoarticles.Designer.cs">
+      <DependentUpon>201402131120080_addeddeisplaynamestoarticles.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201402131234597_changeTextPropertyinArticle.cs" />
+    <Compile Include="Migrations\201402131234597_changeTextPropertyinArticle.Designer.cs">
+      <DependentUpon>201402131234597_changeTextPropertyinArticle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201402131345414_tenamedtoBodyinArticle.cs" />
+    <Compile Include="Migrations\201402131345414_tenamedtoBodyinArticle.Designer.cs">
+      <DependentUpon>201402131345414_tenamedtoBodyinArticle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201402181044085_addedArtistsStagesEvents.cs" />
+    <Compile Include="Migrations\201402181044085_addedArtistsStagesEvents.Designer.cs">
+      <DependentUpon>201402181044085_addedArtistsStagesEvents.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201402211020432_updatedProgramStructure.cs" />
+    <Compile Include="Migrations\201402211020432_updatedProgramStructure.Designer.cs">
+      <DependentUpon>201402211020432_updatedProgramStructure.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201402240810305_updatedEntities.cs" />
+    <Compile Include="Migrations\201402240810305_updatedEntities.Designer.cs">
+      <DependentUpon>201402240810305_updatedEntities.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201402241024027_addedordernumArtist.cs" />
+    <Compile Include="Migrations\201402241024027_addedordernumArtist.Designer.cs">
+      <DependentUpon>201402241024027_addedordernumArtist.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201402241028593_addedIsActiveArtist.cs" />
+    <Compile Include="Migrations\201402241028593_addedIsActiveArtist.Designer.cs">
+      <DependentUpon>201402241028593_addedIsActiveArtist.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201402241716493_ordernuminEvent.cs" />
+    <Compile Include="Migrations\201402241716493_ordernuminEvent.Designer.cs">
+      <DependentUpon>201402241716493_ordernuminEvent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201402251021434_deleteEventDuration.cs" />
+    <Compile Include="Migrations\201402251021434_deleteEventDuration.Designer.cs">
+      <DependentUpon>201402251021434_deleteEventDuration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201402251022488_addedIntDurationEvent.cs" />
+    <Compile Include="Migrations\201402251022488_addedIntDurationEvent.Designer.cs">
+      <DependentUpon>201402251022488_addedIntDurationEvent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201402251159456_addedFieldsInEventAndAddedArtistOnEventTable.cs" />
+    <Compile Include="Migrations\201402251159456_addedFieldsInEventAndAddedArtistOnEventTable.Designer.cs">
+      <DependentUpon>201402251159456_addedFieldsInEventAndAddedArtistOnEventTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201402251433579_addedDescriptionInFestival.cs" />
+    <Compile Include="Migrations\201402251433579_addedDescriptionInFestival.Designer.cs">
+      <DependentUpon>201402251433579_addedDescriptionInFestival.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201403021341473_addedArtistsInFestivals.cs" />
+    <Compile Include="Migrations\201403021341473_addedArtistsInFestivals.Designer.cs">
+      <DependentUpon>201403021341473_addedArtistsInFestivals.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201403111605298_addedSeminars.cs" />
+    <Compile Include="Migrations\201403111605298_addedSeminars.Designer.cs">
+      <DependentUpon>201403111605298_addedSeminars.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201403111649147_addedOrderNumtoSeminar.cs" />
+    <Compile Include="Migrations\201403111649147_addedOrderNumtoSeminar.Designer.cs">
+      <DependentUpon>201403111649147_addedOrderNumtoSeminar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201403170817540_addedispartnerandiassponsor.cs" />
+    <Compile Include="Migrations\201403170817540_addedispartnerandiassponsor.Designer.cs">
+      <DependentUpon>201403170817540_addedispartnerandiassponsor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201403271409479_addedPriceToEvent.cs" />
+    <Compile Include="Migrations\201403271409479_addedPriceToEvent.Designer.cs">
+      <DependentUpon>201403271409479_addedPriceToEvent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ArticleModel.cs" />
+    <Compile Include="Models\ArticlesFrontModel.cs" />
+    <Compile Include="Models\ArtistModel.cs" />
+    <Compile Include="Models\ArtistsInFestivalModel.cs" />
+    <Compile Include="Models\CategoryModel.cs" />
+    <Compile Include="Models\ContentModel.cs" />
+    <Compile Include="Models\EventModel.cs" />
+    <Compile Include="Models\EventsInFestivalModel.cs" />
+    <Compile Include="Models\GetArticlesModel.cs" />
+    <Compile Include="Models\HomePageModel.cs" />
+    <Compile Include="Models\MediaModels.cs" />
+    <Compile Include="Models\NewsPageModel.cs" />
+    <Compile Include="Models\ProgramPageModel.cs" />
+    <Compile Include="Models\TokenPasswordModel.cs" />
+    <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="DAL\FestivalDBContext.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201401311150444_Initial.cs" />
+    <Compile Include="Migrations\201401311150444_Initial.Designer.cs">
+      <DependentUpon>201401311150444_Initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201402012020042_addedUserProfielFields.cs" />
+    <Compile Include="Migrations\201402012020042_addedUserProfielFields.Designer.cs">
+      <DependentUpon>201402012020042_addedUserProfielFields.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201402021308379_addedIsActiveUser.cs" />
+    <Compile Include="Migrations\201402021308379_addedIsActiveUser.Designer.cs">
+      <DependentUpon>201402021308379_addedIsActiveUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201402021507092_addedRequiredToUserProfile.cs" />
+    <Compile Include="Migrations\201402021507092_addedRequiredToUserProfile.Designer.cs">
+      <DependentUpon>201402021507092_addedRequiredToUserProfile.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201402021532127_addedRequiredToUserProfile2.cs" />
+    <Compile Include="Migrations\201402021532127_addedRequiredToUserProfile2.Designer.cs">
+      <DependentUpon>201402021532127_addedRequiredToUserProfile2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201402021710278_addedRequiredToUserProfile3.cs" />
+    <Compile Include="Migrations\201402021710278_addedRequiredToUserProfile3.Designer.cs">
+      <DependentUpon>201402021710278_addedRequiredToUserProfile3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\CreateUserProfileModel.cs" />
+    <Compile Include="Models\EditUserModel.cs" />
+    <Compile Include="Models\Entities.cs" />
+    <Compile Include="Models\LoginModel.cs" />
+    <Compile Include="Models\ResetPasswordModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\ContentRepositoryBase.cs" />
+    <Compile Include="Repositories\DataRepository.cs" />
+    <Compile Include="Repositories\FrontSideRepo.cs" />
+    <Compile Include="Repositories\IDataRepository.cs" />
+    <Compile Include="Repositories\IFrontSideRepo.cs" />
+    <Compile Include="Repositories\ILayoutRepo.cs" />
+    <Compile Include="Repositories\IMediaManager.cs" />
+    <Compile Include="Repositories\LayoutRepo.cs" />
+    <Compile Include="Repositories\MediaManager.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\web.config" />
+    <Content Include="packages.config" />
+    <Content Include="Views\Shared\FestivalCMSLayout.cshtml" />
+    <Content Include="Scripts\jquery-2.1.0.min.map" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\User\Index.cshtml" />
+    <Content Include="Views\User\UsersTable.cshtml" />
+    <Content Include="Views\User\CreateUser.cshtml" />
+    <Content Include="Views\User\EditUser.cshtml" />
+    <Content Include="Views\User\EditUserNoAjax.cshtml" />
+    <Content Include="Views\Account\Reset.cshtml" />
+    <Content Include="Views\Account\MailLink.cshtml" />
+    <Content Include="Views\Footer\Index.cshtml" />
+    <Content Include="Views\Footer\GetMetatag.cshtml" />
+    <Content Include="Views\Categories\Index.cshtml" />
+    <Content Include="Views\EditorTemplates\OrderNumber.cshtml" />
+    <Content Include="Views\Categories\CreateCategory.cshtml" />
+    <Content Include="Views\Shared\AddingMedia.cshtml" />
+    <Content Include="Views\Categories\IndexAjax.cshtml" />
+    <Content Include="Views\Categories\EditCategory.cshtml" />
+    <Content Include="Views\Articles\Index.cshtml" />
+    <Content Include="Views\Articles\IndexAjax.cshtml" />
+    <Content Include="Views\Categories\GetCategoryList.cshtml" />
+    <Content Include="Views\Articles\CreateArticle.cshtml" />
+    <Content Include="Views\Articles\EditArticle.cshtml" />
+    <Content Include="Views\Shared\EditMedia.cshtml" />
+    <Content Include="Views\Programm\GetAllArtists.cshtml" />
+    <Content Include="Views\Programm\CreateArtist.cshtml" />
+    <Content Include="Views\Programm\GetAllArtistsAjax.cshtml" />
+    <Content Include="Views\Programm\GetAllEvents.cshtml" />
+    <Content Include="Views\Programm\GetAllEventsAjax.cshtml" />
+    <Content Include="Views\Programm\CreateEvent.cshtml" />
+    <Content Include="Views\Programm\GetAllFestivals.cshtml" />
+    <Content Include="Views\Programm\GetAllFestivalsAjax.cshtml" />
+    <Content Include="Views\Programm\CreateFestival.cshtml" />
+    <Content Include="Views\Programm\GetFestival.cshtml" />
+    <Content Include="Views\Programm\GetFestivalAjax.cshtml" />
+    <Content Include="Views\Programm\EditArtist.cshtml" />
+    <Content Include="Views\Programm\GetAllFestivalsForSideMenu.cshtml" />
+    <Content Include="Views\Programm\CreateArtistInFestival.cshtml" />
+    <Content Include="Views\Programm\GetArtistsInFestival.cshtml" />
+    <Content Include="Views\Programm\EditEvent.cshtml" />
+    <Content Include="Views\Programm\EditFestival.cshtml" />
+    <Content Include="Views\Seminars\Create.cshtml" />
+    <Content Include="Views\Seminars\Delete.cshtml" />
+    <Content Include="Views\Seminars\Details.cshtml" />
+    <Content Include="Views\Seminars\Edit.cshtml" />
+    <Content Include="Views\Seminars\Index.cshtml" />
+    <Content Include="Views\Cms\Index.cshtml" />
+    <Content Include="Views\Shared\FestivalFrontLayout.cshtml" />
+    <Content Include="Views\FrontLayout\GetPartners.cshtml" />
+    <Content Include="Views\FrontLayout\GetSponsors.cshtml" />
+    <Content Include="Views\News\Index.cshtml" />
+    <Content Include="Views\Programs\Index.cshtml" />
+    <Content Include="Views\Programm\CreateEventNoAjax.cshtml" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Images\" />
+    <Folder Include="Views\Base\" />
+    <Folder Include="Views\Config\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201401311150444_Initial.resx">
+      <DependentUpon>201401311150444_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201402012020042_addedUserProfielFields.resx">
+      <DependentUpon>201402012020042_addedUserProfielFields.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201402021308379_addedIsActiveUser.resx">
+      <DependentUpon>201402021308379_addedIsActiveUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201402021507092_addedRequiredToUserProfile.resx">
+      <DependentUpon>201402021507092_addedRequiredToUserProfile.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201402021532127_addedRequiredToUserProfile2.resx">
+      <DependentUpon>201402021532127_addedRequiredToUserProfile2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201402021710278_addedRequiredToUserProfile3.resx">
+      <DependentUpon>201402021710278_addedRequiredToUserProfile3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201402031219180_addedfooter.resx">
+      <DependentUpon>201402031219180_addedfooter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201402031359150_addedmetatag.resx">
+      <DependentUpon>201402031359150_addedmetatag.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201402031401043_addedmetatagtoContext.resx">
+      <DependentUpon>201402031401043_addedmetatagtoContext.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201402031430114_addedcategories.resx">
+      <DependentUpon>201402031430114_addedcategories.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201402031441186_addedArticles.resx">
+      <DependentUpon>201402031441186_addedArticles.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201402031442373_addedArticlestoContext.resx">
+      <DependentUpon>201402031442373_addedArticlestoContext.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201402031457365_addedMedia.resx">
+      <DependentUpon>201402031457365_addedMedia.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201402041023555_addedvideocontent.resx">
+      <DependentUpon>201402041023555_addedvideocontent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201402041049290_addedgalleryphotos.resx">
+      <DependentUpon>201402041049290_addedgalleryphotos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201402041159485_addedrequiredtocategoryname.resx">
+      <DependentUpon>201402041159485_addedrequiredtocategoryname.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201402041207547_addednullstoCategorytables.resx">
+      <DependentUpon>201402041207547_addednullstoCategorytables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201402041830283_addedUnknown.resx">
+      <DependentUpon>201402041830283_addedUnknown.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201402121015141_removenullfromcategorytable.resx">
+      <DependentUpon>201402121015141_removenullfromcategorytable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201402130857031_removenullfromarticle.resx">
+      <DependentUpon>201402130857031_removenullfromarticle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201402131120080_addeddeisplaynamestoarticles.resx">
+      <DependentUpon>201402131120080_addeddeisplaynamestoarticles.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201402131234597_changeTextPropertyinArticle.resx">
+      <DependentUpon>201402131234597_changeTextPropertyinArticle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201402131345414_tenamedtoBodyinArticle.resx">
+      <DependentUpon>201402131345414_tenamedtoBodyinArticle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201402181044085_addedArtistsStagesEvents.resx">
+      <DependentUpon>201402181044085_addedArtistsStagesEvents.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201402211020432_updatedProgramStructure.resx">
+      <DependentUpon>201402211020432_updatedProgramStructure.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201402240810305_updatedEntities.resx">
+      <DependentUpon>201402240810305_updatedEntities.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201402241024027_addedordernumArtist.resx">
+      <DependentUpon>201402241024027_addedordernumArtist.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201402241028593_addedIsActiveArtist.resx">
+      <DependentUpon>201402241028593_addedIsActiveArtist.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201402241716493_ordernuminEvent.resx">
+      <DependentUpon>201402241716493_ordernuminEvent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201402251021434_deleteEventDuration.resx">
+      <DependentUpon>201402251021434_deleteEventDuration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201402251022488_addedIntDurationEvent.resx">
+      <DependentUpon>201402251022488_addedIntDurationEvent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201402251159456_addedFieldsInEventAndAddedArtistOnEventTable.resx">
+      <DependentUpon>201402251159456_addedFieldsInEventAndAddedArtistOnEventTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201402251433579_addedDescriptionInFestival.resx">
+      <DependentUpon>201402251433579_addedDescriptionInFestival.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201403021341473_addedArtistsInFestivals.resx">
+      <DependentUpon>201403021341473_addedArtistsInFestivals.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201403111605298_addedSeminars.resx">
+      <DependentUpon>201403111605298_addedSeminars.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201403111649147_addedOrderNumtoSeminar.resx">
+      <DependentUpon>201403111649147_addedOrderNumtoSeminar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201403170817540_addedispartnerandiassponsor.resx">
+      <DependentUpon>201403170817540_addedispartnerandiassponsor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201403271409479_addedPriceToEvent.resx">
+      <DependentUpon>201403271409479_addedPriceToEvent.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>50501</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:48106/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

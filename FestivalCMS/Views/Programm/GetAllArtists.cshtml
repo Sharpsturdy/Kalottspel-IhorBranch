@@ -1,0 +1,9 @@
+﻿@model List<FestivalCMS.Models.Artist>
+@{
+    ViewBag.Title = "Artists";
+    Layout = "~/Views/Shared/FestivalCMSLayout.cshtml";
+}
+<div id="page-wrapper">
+    @Html.Partial("GetAllArtistsAjax", Model)
+</div>
+

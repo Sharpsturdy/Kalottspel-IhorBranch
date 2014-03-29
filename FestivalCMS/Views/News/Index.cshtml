@@ -1,0 +1,85 @@
+﻿@model NewsPageModel
+@{
+    ViewBag.Title = "News";
+    Layout = "~/Views/Shared/FestivalFrontLayout.cshtml";
+}
+
+<div class='col-xs-12'>
+    <div class='left_side col-xs-12 col-md-8'>
+        <div class='topspace col-xs-12'>
+            <div class='col-xs-12'>
+                <img class='img-responsive center-block' src="~/Images/@Model.NewsPhotosLink">
+            </div>
+            <div class='topspace col-xs-12'>
+                <h3 class='blue'>@Model.News.Headline</h3>
+                <p>
+                    @Model.News.Body
+                </p>
+                <button class='btn btn-primary' onclick="window.location.href='@Url.Action("Index","Home")'">TILBAKE</button>
+            </div>
+        </div>
+    </div>
+    <div class='right_side col-xs-12 col-md-4'>
+        <h3 class='bilet'>
+            Kj&oslash;pp Billett <span class='pull-right fa fa-angle-right'></span>
+        </h3>
+        @foreach (var fest in Model.Festivals)
+        {
+            <h2 class='program'>
+                @fest.Name
+            </h2>
+            foreach (var festEvent in Model.FestivalEvents)
+            {
+                <div class='program_artist'>
+                    <div class='date'>
+                        @System.Globalization.DateTimeFormatInfo.CurrentInfo.GetShortestDayName(festEvent.StartOn.DayOfWeek), @festEvent.StartOn.Day.@System.Globalization.DateTimeFormatInfo.CurrentInfo.GetMonthName(festEvent.StartOn.Month) / KL @festEvent.StartOn.ToString("HH.mm")
+                    </div>
+                    <h3 class='artist'>
+                        @{int index = 0;
+                        string space = ", ";}
+                        @foreach (var art in festEvent.EventArtists)
+                        {
+                            if (index > 0)
+                            {
+                                @space
+                            }
+                            @art.Artist.Name
+                            index++;
+                        }/@festEvent.Title
+                    </h3>
+                </div>
+            }
+        }
+        <h2 class='program'>
+            PROGRAM V&aring;R 2014
+        </h2>
+        @{int eventCount = 0;}
+        @foreach (var programEvent in Model.ProgrammEvents)
+        {
+            <div class='program_artist'>
+                <div class='date'>
+                    @System.Globalization.DateTimeFormatInfo.CurrentInfo.GetShortestDayName(programEvent.StartOn.DayOfWeek), @programEvent.StartOn.Day.@System.Globalization.DateTimeFormatInfo.CurrentInfo.GetMonthName(programEvent.StartOn.Month) / KL @programEvent.StartOn.ToString("HH.mm")
+                </div>
+                @if (eventCount == 0)
+                {
+                    <img class='img-responsive center-block' src="~/Images/@Model.ArtistsPhotos[programEvent.EventArtists.FirstOrDefault().Artist.ID]">
+                }
+                <h3 class='artist'>
+                    @{int index = 0;
+                    string space = ", ";}
+                    @foreach (var artist in programEvent.EventArtists)
+                    {
+                        if (index > 0)
+                        {
+                            @space
+                        }
+                        @artist.Artist.Name
+                        index++;
+                    }
+                </h3>
+            </div>
+                    eventCount++;
+        }
+    </div>
+</div>
+

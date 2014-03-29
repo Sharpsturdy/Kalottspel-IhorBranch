@@ -1,0 +1,4 @@
+@media(max-width: 766px) {
+	.topspace div:first-child {margin-bottom: 30px;}
+	.accordion .btn.btn-primary {margin-top: 20px;}
+}

@@ -1,0 +1,9 @@
+﻿@model List<FestivalCMS.Models.Category>
+@{
+    ViewBag.Title = "Categories";
+    Layout = "~/Views/Shared/FestivalCMSLayout.cshtml";
+}
+
+<div id="page-wrapper">
+    @Html.Partial("IndexAjax", Model)
+</div>

@@ -1,0 +1,94 @@
+﻿@model FestivalCMS.Models.EventsInFestivalModel
+
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">
+            @Model.Festival.Name / Events
+        </h1>
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+<!-- /.row -->
+<div class="row">
+    <div class="col-lg-12">
+        @using (Html.BeginForm("UpdateEventInFestOrderNum", "Programm"))
+        {
+            @Html.AntiForgeryToken()
+            <div class="panel panel-default">
+                <div class="panel-heading">
+
+                    <button id="createfestevent" data-url="@Url.Action("CreateEventInFestival", new { fID = Model.Festival.ID })" type="button" class="btn btn-success">Add Event</button>
+                    <button type="submit" class="btn btn-warning">Update order</button>
+
+                </div>
+                <!-- /.panel-heading -->
+                <div class="panel-body">
+                    <div class="table-responsive">
+                        <table class="table table-striped table-bordered table-hover" id="categoryTable">
+                            <thead>
+                                <tr>
+                                    <th>Event</th>
+                                    <th>Date</th>
+                                    <th>Order</th>
+                                    <th>Active</th>
+                                    <th>Edit</th>
+                                    <th>Delete</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                @for (int i = 0; i < Model.Events.Count; i++)
+                                {
+                                    <tr class="odd gradeX">
+                                        <td>
+                                            @Model.Events[i].Title
+                                        </td>
+                                        <td>
+                                            @Model.Events[i].StartOn.ToShortDateString()
+                                        </td>
+                                        <td>
+                                            @Html.TextBoxFor(m => m.Events[i].OrderNum, new { type = "number", width = "30px" })
+                                        </td>
+                                        @if (Model.Events[i].isActive)
+                                        {
+                                            <td>
+                                                <input type="button" class="btn btn-outline btn-success activeitem" data-url="@Url.Action("ActivateEvent", new { eID = Model.Events[i].ID,toActivate = "false", fId=Model.Festival.ID  })" value="Published" />
+                                            </td>
+                                        }
+                                        else
+                                        {
+                                            <td>
+                                                <input type="button" class="btn btn-outline btn-warning activeitem" data-url="@Url.Action("ActivateEvent", new { eID = Model.Events[i].ID, toActivate = "true", fId = Model.Festival.ID })" value="Publish" />
+                                            </td>
+                                        }
+                                        <td>
+                                            <input type="button" class="btn btn-outline btn-warning edititem" data-url="@Url.Action("EditEventInfestival", new { eID = Model.Events[i].ID, fId = Model.Festival.ID, })" value="Edit" />
+                                        </td>
+                                        <td>
+                                            <input type="button" class="btn btn-outline btn-danger delitem" data-url="@Url.Action("DeleteEventInFestival", new { eID = Model.Events[i].ID, fID = Model.Festival.ID, })" data-name="@Model.Events[i].Title" value="Delete" />
+                                        </td>
+                                    </tr>
+                                    @Html.HiddenFor(m => Model.Events[i].ID)
+                                }
+                                @Html.HiddenFor(m => m.Festival.ID)
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- /.table-responsive -->
+                </div>
+                <!-- /.panel-body -->
+            </div>
+        <!-- /.panel -->
+        }
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+<!-- /.row -->
+@{string menuid = "#festival" + Model.Festival.ID.ToString();}
+<script>
+    $("@menuid").addClass("in");
+    InitiateEventsInFestivalList();
+</script>
+
+
+

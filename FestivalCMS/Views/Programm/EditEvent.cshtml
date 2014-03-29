@@ -1,0 +1,127 @@
+﻿@model EventModel
+@{
+    ViewBag.Title = "EditEvent";
+    Layout = "~/Views/Shared/FestivalCMSLayout.cshtml";
+}
+
+<div id="page-wrapper">
+    <div class="row">
+        <div class="col-lg-8">
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+        <div class="col-lg-12">
+            <h1 class="page-header">@Model.Event.Title</h1>
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+    <div class="row">
+        @{
+            string action = Model.Event.FestivalID == null ? Url.Action("EditEvent") : Url.Action("EditEventInFestival");
+        }
+        <form method="post" action="@action">
+            <div class="col-lg-6">
+                <div class="form-horizontal">
+
+                    @Html.AntiForgeryToken()
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Event.Title, new { @class = "control-label col-md-4" })
+                        <div class="col-md-6">
+                            @Html.TextBoxFor(model => model.Event.Title, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.Event.Title, null, new { @class = "alert-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Event.Stage, new { @class = "control-label col-md-4" })
+                        <div class="col-md-6">
+                            @Html.TextBoxFor(model => model.Event.Stage, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.Event.Stage, null, new { @class = "alert-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.StartDate, new { @class = "control-label col-md-4" })
+                        <div class="col-md-6 input-group date" id="datetimepicker4">
+                            @Html.TextBoxFor(model => model.StartDate, new { @class = "form-control", data_format = "DD.MM.YYYY" })
+                            <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-date"></span>
+                            </span>
+                            @Html.ValidationMessageFor(model => model.StartDate, null, new { @class = "alert-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.StartTime, new { @class = "control-label col-md-4" })
+                        <div class="col-md-6 input-group date" id="datetimepicker5">
+                            @Html.TextBoxFor(model => model.StartTime, new { @class = "form-control", data_format = "HH:mm" })
+                            <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-time"></span>
+                            </span>
+                            @Html.ValidationMessageFor(model => model.StartTime, null, new { @class = "alert-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Event.Duration, new { @class = "control-label col-md-4" })
+                        <div class="col-md-6">
+                            @Html.TextBoxFor(m => m.Event.Duration, new { @class = "form-control", id = "mediaselector" })
+                            @Html.ValidationMessageFor(model => model.Event.Duration, null, new { @class = "alert-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Event.ExtLink, new { @class = "control-label col-md-4" })
+                        <div class="col-md-6">
+                            @Html.TextBoxFor(model => model.Event.ExtLink, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.Event.ExtLink, null, new { @class = "alert-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Update event" class="btn btn-default" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-6">
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Event.Description, new { @class = "control-label col-md-4" })
+                        <div class="col-md-6">
+                            @Html.TextAreaFor(model => model.Event.Description, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.Event.Description, null, new { @class = "alert-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Event.EventArtists, new { @class = "control-label col-md-4" })
+                        <div class="col-md-6">
+                            @Html.DropDownListFor(m => m.SelectedArtists, Model.Artists, new { @class = "form-control", multiple = "multiple", id = "artistselection" })
+                            @Html.ValidationMessageFor(model => model.SelectedArtists, null, new { @class = "alert-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Event.TicketCode, new { @class = "control-label col-md-4" })
+                        <div class="col-md-6">
+                            @Html.TextBoxFor(model => model.Event.TicketCode, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.Event.TicketCode, null, new { @class = "alert-danger" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @Html.HiddenFor(e => e.Event.FestivalID)
+            @Html.HiddenFor(e=>e.Event.ID)
+        </form>
+        <script>
+            $("#datetimepicker4").datetimepicker({ pickTime: false });
+            $("#datetimepicker5").datetimepicker({ pickDate: false });
+            $("#artistselection").multiselect();
+
+        </script>
+    </div>
+
+</div>
+

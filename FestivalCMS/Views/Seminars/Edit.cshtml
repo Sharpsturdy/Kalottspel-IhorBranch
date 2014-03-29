@@ -1,0 +1,80 @@
+﻿@model FestivalCMS.Models.Seminar
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/FestivalCMSLayout.cshtml";
+}
+
+<div id="page-wrapper">
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">@Html.DisplayFor(m => m.Headline)</h1>
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+    <div class="row">
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+
+                @Html.ValidationSummary(true)
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Headline, new { @class = "control-label col-md-2" })
+                    <div class="col-md-3">
+                        @Html.TextBoxFor(model => model.Headline, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Headline)
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.StartOn, new { @class = "control-label col-md-2" })
+                    <div class="col-md-3 input-group date" id="starton">
+                        @Html.TextBoxFor(model => model.StartOn, new { @class = "form-control", data_format = "DD.MM.YYYY HH:mm" })
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-date"></span>
+                        </span>
+                        @Html.ValidationMessageFor(model => model.StartOn)
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.ExtLink, new { @class = "control-label col-md-2" })
+                    <div class="col-md-3">
+                        @Html.TextBoxFor(model => model.ExtLink, new { @class = "form-control"})
+                        @Html.ValidationMessageFor(model => model.ExtLink)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Duration, new { @class = "control-label col-md-2" })
+                    <div class="col-md-3">
+                        @Html.TextBoxFor(model => model.Duration, new { @class = "form-control", type="number" })
+                        @Html.ValidationMessageFor(model => model.Duration)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Text, new { @class = "control-label col-md-2" })
+                    <div class="col-md-6">
+                        @Html.TextAreaFor(model => model.Text, new { @class = "form-control"})
+                        @Html.ValidationMessageFor(model => model.Text)
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Update" class="btn btn-default" /> | @Html.ActionLink("Back to List", "Index", new { })
+                    </div>
+                </div>
+            </div>
+        }
+
+    </div>
+</div>
+<script>
+    $("#starton").datetimepicker();
+    $.validator.methods.date = function (value, element) {
+        return this.optional(element) || parseDate(value, "dd.MM.yyyy HH:MM") !== null;
+    }
+</script>

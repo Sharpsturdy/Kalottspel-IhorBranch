@@ -1,0 +1,59 @@
+﻿@model ProgramPageModel
+@{
+    ViewBag.Title = "Program";
+    Layout = "~/Views/Shared/FestivalFrontLayout.cshtml";
+}
+@{DateTime current = new DateTime();
+int eventCount = 1;}
+@foreach (var item in Model.ProgrammEvents)
+{
+    if (current.Day != item.StartOn.Day || current.Month != item.StartOn.Month || current.Year != item.StartOn.Year)
+    {
+        <h1 class='blue'>@System.Globalization.DateTimeFormatInfo.CurrentInfo.GetDayName(item.StartOn.DayOfWeek) / @item.StartOn.Day. @System.Globalization.DateTimeFormatInfo.CurrentInfo.GetMonthName(item.StartOn.Month)</h1>
+        current = item.StartOn;
+    }
+    <div class='article col-xs-12 accordion'>
+        <div class='col-xs-12 col-sm-2 col-lg-1'>
+            <small>KL @item.StartOn.ToString("HH:mm")</small>
+        </div>
+        <div class='col-xs-12 col-sm-6 col-lg-7'>
+            <h3>
+                @{int index = 0;
+                string space = ", ";}
+                @foreach (var artist in item.EventArtists)
+                {
+                    if (index > 0)
+                    {
+                        @space
+                    }
+                    @artist.Artist.Name
+                }
+            </h3>
+            <span class='date_space'>@item.Title</span>
+            <span class='date_space'>Varighet: @item.Duration Time</span>
+            <span>Billettpris: @item.Price,-</span>
+        </div>
+        <div class='col-xs-12 col-sm-4'>
+            @{string ID = "collapse" + eventCount.ToString();
+              string linkID = '#' + ID;
+            }
+            <a class='btn btn-primary' data-toggle="collapse" href="@linkID">Mer Info</a>
+            <a class='btn btn-primary'>Kj&oslash;pp Billett</a>
+        </div>
+        @{string open = eventCount == 1 ? "in" : null;}
+        <div id='@ID' class="collapse @open">
+            <div class='col-xs-12 col-sm-10 col-sm-offset-2 col-lg-11 col-lg-offset-1'>
+                <div class='col-xs-12 col-sm-4'>
+                    <img class='img-responsive center-block' src="/Images/@Model.ArtistsPhotos[item.EventArtists.FirstOrDefault().Artist.ID]">
+                </div>
+                <div class='col-xs-12 col-sm-7'>
+                    <p>
+                        @item.EventArtists.FirstOrDefault().Artist.Description
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    eventCount++;
+}
+

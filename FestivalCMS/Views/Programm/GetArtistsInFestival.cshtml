@@ -1,0 +1,88 @@
+﻿@model ArtistsInFestivalModel
+@{
+    ViewBag.Title = "GetArtistsInFestival";
+    Layout = "~/Views/Shared/FestivalCMSLayout.cshtml";
+}
+
+<div id="page-wrapper">
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">
+                @Model.Festival.Name / Artists
+            </h1>
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+    <!-- /.row -->
+    <div class="row">
+        <div class="col-lg-12">
+            @using (Html.BeginForm("UpdateArtistOrderNum", "Programm", new { fId = Model.Festival.ID }))
+            {
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+
+                        <button id="createarstinfest" data-url="@Url.Action("CreateArtistInFestival", new { fID=Model.Festival.ID})" type="button" class="btn btn-success">New Artist</button>
+                        <button type="submit" class="btn btn-warning">Update order</button>
+
+                    </div>
+                    <!-- /.panel-heading -->
+                    <div class="panel-body">
+                        <div class="table-responsive">
+                            <table class="table table-striped table-bordered table-hover" id="categoryTable">
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Order</th>
+                                        <th>Active</th>
+                                        <th>Edit</th>
+                                        <th>Delete</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @for (var i = 0; i < Model.Artists.Count; i++)
+                                    {
+                                        <tr class="odd gradeX">
+                                            <td>@Model.Artists[i].Name</td>
+                                            <td>
+                                                @Html.TextBoxFor(m => m.Artists[i].OrderNum, new { type = "number", width = "30px" })
+                                            </td>
+                                            @if (Model.Artists[i].isActive)
+                                            {
+                                                <td>
+                                                    <input type="button" class="btn btn-outline btn-success activeitem" data-url="@Url.Action("ActivateArtist", new { aID = Model.Artists[i].ID, toActivate = "false" })" value="Published" />
+                                                </td>
+                                            }
+                                            else
+                                            {
+                                                <td>
+                                                    <input type="button" class="btn btn-outline btn-warning activeitem" data-url="@Url.Action("ActivateArtist", new { aID = Model.Artists[i].ID, toActivate = "true" })" value="Publish" />
+                                                </td>
+                                            }
+                                            <td>
+                                                <input type="button" class="btn btn-outline btn-warning edititem" data-url="@Url.Action("EditArtist", new { aID = Model.Artists[i].ID })" value="Edit" />
+                                            </td>
+                                            <td>
+                                                <input type="button" class="btn btn-outline btn-danger delitem" data-url="@Url.Action("DeleteArtistInFestival", new { aID = Model.Artists[i].ID,fId=Model.Festival.ID })" data-name="@Model.Artists[i].Name" value="Delete" />
+                                            </td>
+                                        </tr>
+                                        @Html.HiddenFor(m => Model.Artists[i].ID)
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- /.table-responsive -->
+                    </div>
+                    <!-- /.panel-body -->
+                </div>
+        <!-- /.panel -->
+            }
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+    <!-- /.row -->
+</div>
+@{string menuid = "#festival" + Model.Festival.ID.ToString();}
+<script>
+    $("@menuid").addClass("in");
+    InitiateArtistsInFestival();
+</script>

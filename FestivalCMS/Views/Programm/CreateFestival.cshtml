@@ -1,0 +1,77 @@
+﻿@model FestivalCMS.Models.Festival
+
+@{
+    ViewBag.Title = "CreateArtistInFestival";
+    Layout = "~/Views/Shared/FestivalCMSLayout.cshtml";
+}
+
+<div id="page-wrapper">
+    <div class="row">
+        <div class="col-lg-8">
+            @Html.ActionLink("Back to List", "GetAllFestivals")
+        </div>
+        <div class="col-lg-12">
+            <h1 class="page-header">New Festival</h1>
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+    <div class="row">
+        <form method="post" action="@Url.Action("CreateFeastival")">
+            <div class="col-lg-6">
+                <div class="form-horizontal">
+
+                    @Html.AntiForgeryToken()
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Name, new { @class = "control-label col-md-4" })
+                        <div class="col-md-6">
+                            @Html.TextBoxFor(model => model.Name, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.Name, null, new { @class = "alert-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.From, new { @class = "control-label col-md-4" })
+                        <div class="col-md-6 input-group date" id="datefrom">
+                            @Html.TextBoxFor(model => model.From, new { @class = "form-control", data_format = "DD.MM.YYYY" })
+                            <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-date"></span>
+                            </span>
+                            @Html.ValidationMessageFor(model => model.From, null, new { @class = "alert-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Untill, new { @class = "control-label col-md-4" })
+                        <div class="col-md-6 input-group date" id="datetill">
+                            @Html.TextBoxFor(model => model.Untill, new { @class = "form-control", data_format = "DD.MM.YYYY" })
+                            <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-date"></span>
+                            </span>
+                            @Html.ValidationMessageFor(model => model.Untill, null, new { @class = "alert-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Description, new { @class = "control-label col-md-4" })
+                        <div class="col-md-6">
+                            @Html.TextAreaFor(m => m.Description, new { @class = "form-control", id = "mediaselector" })
+                            @Html.ValidationMessageFor(model => model.Description, null, new { @class = "alert-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Create" class="btn btn-default" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<script>
+    $("#datefrom").datetimepicker({ pickTime: false });
+    $("#datetill").datetimepicker({ pickTime: false });
+    $.validator.methods.date = function (value, element) {
+        return this.optional(element) || parseDate(value, "dd.MM.yyyy") !== null;
+    }
+</script>
